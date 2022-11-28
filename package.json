@@ -8,7 +8,7 @@
     "deploy": "node node --max-old-space-size=3072 dist/app.js",
     "watch-deploy": "nodemon dist/app.js",
     "server": "concurrently \"npm run watch-tsc\" \"npm run watch-deploy\"",
-    "start": "node app"
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
