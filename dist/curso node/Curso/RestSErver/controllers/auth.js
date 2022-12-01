@@ -58,31 +58,10 @@ exports.login = login;
 const googleSignIN = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id_token } = req.body;
     try {
-        const { correo, nombre, img } = yield (0, google_verify_1.googleVerify)(id_token);
-        console.log({ correo, nombre, img });
-        let usuario = yield usuario_1.default.findOne({ correo });
-        if (!usuario) {
-            // Tengo que crearlo
-            const data = {
-                nombre,
-                correo,
-                password: ":P",
-                img,
-                google: true,
-            };
-            usuario = new usuario_1.default(data);
-            yield usuario.save();
-        }
-        // Si el usuario en DB
-        if (!usuario.estado) {
-            return res.status(401).json({
-                msg: "Hable con el administrador, usuario bloqueado",
-            });
-        }
-        // Generar el JWT
-        const token = yield (0, generarJWT_1.generarJWT)(usuario.id);
+        const googleUser = yield (0, google_verify_1.googleVerify)(id_token);
+        console.log(googleUser);
         res.json({
-            msg: "todo ok",
+            msg: "Todo ok",
             id_token,
         });
     }

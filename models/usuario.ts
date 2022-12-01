@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Document, model, Schema } from "mongoose";
 
 export type TUser = {
   nombre: String;
@@ -10,7 +10,6 @@ export type TUser = {
 };
 
 export interface IUser extends TUser, Document {}
-
 
 const usuarioSchema: Schema = new Schema({
   nombre: {
@@ -31,7 +30,8 @@ const usuarioSchema: Schema = new Schema({
   },
   role: {
     type: String,
-    required:true,
+    required: true,
+    default: "USER_ROLE",
     enum: ["ADMIN_ROLE", "USER_ROLE"],
   },
   estado: {
@@ -44,13 +44,13 @@ const usuarioSchema: Schema = new Schema({
   },
 });
 
-usuarioSchema.methods.toJSON=function(){
-  const {password,__v, _id,...usuario} = this.toObject();
-  usuario.uid=_id;
+usuarioSchema.methods.toJSON = function () {
+  const { password, __v, _id, ...usuario } = this.toObject();
+  usuario.uid = _id;
   return usuario;
-}
+};
 
-export default model("Usuario", usuarioSchema);;
+export default model("Usuario", usuarioSchema);
 /*{
     'nombre': 'Wilfredo',
         'correo': 'wilfredoquiala@gmail.com',
@@ -59,4 +59,4 @@ export default model("Usuario", usuarioSchema);;
         'rol': 'ajhjahsj',
         'estado': boolean,
             'google': boolean    
-}*/ 
+}*/

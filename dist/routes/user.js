@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const validar_jwt_1 = __importDefault(require("../middleware/validar-jwt"));
-const db_validators_1 = require("./../helpers/db-validators");
 const express_1 = require("express");
 const express_validator_1 = require("express-validator");
+const validar_jwt_1 = __importDefault(require("../middleware/validar-jwt"));
+const db_validators_1 = require("./../helpers/db-validators");
 const user_1 = require("../controllers/user");
 const validar_campos_1 = require("../middleware/validar-campos");
 const validar_roles_1 = require("../middleware/validar-roles");

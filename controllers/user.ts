@@ -1,15 +1,15 @@
-import { validarCampos } from "./../middleware/validar-campos";
-import { Response, Request, NextFunction } from "express";
-import bcrypt from "bcryptjs";
-import Usuario from "../models/usuario";
+//import { validarCampos } from "./../middleware/validar-campos";
 //import  Request from '../helpers/types';
-
 //import { Usuario } from '../models/usuario';
-import { existeUsuarioporID } from "../helpers/db-validators";
-import usuario from "../models/usuario";
-import AuthRequest from "../helpers/types";
+// import { existeUsuarioporID } from "../helpers/db-validators";
+// import usuario from "../models/usuario";
 
-export const getUser = async (req: Request, res: Response) => {
+import bcrypt from "bcryptjs";
+import { Response } from "express";
+import AuthRequest from "../helpers/types";
+import Usuario from "../models/usuario";
+
+export const getUser = async (req: AuthRequest, res: Response) => {
   const { limite = 5, desde = 0 } = req.query;
 
   const query = { estado: true };
@@ -38,9 +38,9 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
   });
 };
 
-export const putUser = async (req: Request, res: Response) => {
+export const putUser = async (req: AuthRequest, res: Response) => {
   const { id } = req.params;
-  const { _id, password, google, correo, ...resto } = req.body;
+  const { _id, correo, google, password, ...resto } = req.body;
 
   if (password) {
     const salt = bcrypt.genSaltSync();
@@ -54,13 +54,13 @@ export const putUser = async (req: Request, res: Response) => {
   });
 };
 
-export const patchUser = (req: Request, res: Response): void => {
+export const patchUser = (req: AuthRequest, res: Response): void => {
   res.json({
     msg: "probando api con patch",
   });
 };
 
-export const postUser = async (req: Request, res: Response) => {
+export const postUser = async (req: AuthRequest, res: Response) => {
   // Importar la funcion que valida los campos
   // validarCampos(req, res);
   //Obteniendo lo que viene en el request

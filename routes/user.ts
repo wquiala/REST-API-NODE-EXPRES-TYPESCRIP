@@ -1,21 +1,21 @@
-import validarJWT from "../middleware/validar-jwt";
-import {
-  validarRole,
-  emailExiste,
-  existeUsuarioporID,
-} from "./../helpers/db-validators";
 import { Router } from "express";
 import { check } from "express-validator";
+import validarJWT from "../middleware/validar-jwt";
+import {
+  emailExiste,
+  existeUsuarioporID,
+  validarRole,
+} from "./../helpers/db-validators";
 
 import {
-  getUser,
   deleteUser,
-  putUser,
+  getUser,
   patchUser,
   postUser,
+  putUser,
 } from "../controllers/user";
 import { validarCampos } from "../middleware/validar-campos";
-import { esAdminRole, tieneRole } from "../middleware/validar-roles";
+import { tieneRole } from "../middleware/validar-roles";
 
 const router: Router = Router();
 

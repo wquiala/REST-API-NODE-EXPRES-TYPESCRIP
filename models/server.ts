@@ -1,13 +1,13 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
+import { dbConnection } from "../database/config";
 import auth from "../routes/auth";
 import user from "../routes/user";
-import { dbConnection } from "../database/config";
 
 export class Server {
   public app;
   public routerPath;
-  public authPath
+  public authPath;
 
   constructor() {
     this.app = express();
@@ -32,16 +32,13 @@ export class Server {
   }
 
   public Routes(): void {
-    this.app.use(this.authPath, auth); 
+    this.app.use(this.authPath, auth);
     this.app.use(this.routerPath, user); //("/api/user", require("../routes/user"));
   }
 
   public Listen(): void {
-    const server = this.app.listen(5000, () =>{
-      console.log(`Server started on port 5000`);
-         
-    }
-      
-    );
+    this.app.listen(8080, () => {
+      console.log(`Server started on port 8080`);
+    });
   }
 }

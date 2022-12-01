@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
-const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const express_1 = __importDefault(require("express"));
+const config_1 = require("../database/config");
 const auth_1 = __importDefault(require("../routes/auth"));
 const user_1 = __importDefault(require("../routes/user"));
-const config_1 = require("../database/config");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -44,8 +44,8 @@ class Server {
         this.app.use(this.routerPath, user_1.default); //("/api/user", require("../routes/user"));
     }
     Listen() {
-        const server = this.app.listen(5000, () => {
-            console.log(`Server started on port 5000`);
+        this.app.listen(8080, () => {
+            console.log(`Server started on port 8080`);
         });
     }
 }

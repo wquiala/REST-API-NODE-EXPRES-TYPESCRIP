@@ -1,4 +1,9 @@
 "use strict";
+//import { validarCampos } from "./../middleware/validar-campos";
+//import  Request from '../helpers/types';
+//import { Usuario } from '../models/usuario';
+// import { existeUsuarioporID } from "../helpers/db-validators";
+// import usuario from "../models/usuario";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -53,7 +58,7 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.deleteUser = deleteUser;
 const putUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const _a = req.body, { _id, password, google, correo } = _a, resto = __rest(_a, ["_id", "password", "google", "correo"]);
+    const _a = req.body, { _id, correo, google, password } = _a, resto = __rest(_a, ["_id", "correo", "google", "password"]);
     if (password) {
         const salt = bcryptjs_1.default.genSaltSync();
         resto.password = bcryptjs_1.default.hashSync(password, salt);

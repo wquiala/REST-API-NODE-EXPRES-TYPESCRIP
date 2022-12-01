@@ -32,6 +32,7 @@ const usuarioSchema = new mongoose_1.Schema({
     role: {
         type: String,
         required: true,
+        default: "USER_ROLE",
         enum: ["ADMIN_ROLE", "USER_ROLE"],
     },
     estado: {
@@ -49,7 +50,6 @@ usuarioSchema.methods.toJSON = function () {
     return usuario;
 };
 exports.default = (0, mongoose_1.model)("Usuario", usuarioSchema);
-;
 /*{
     'nombre': 'Wilfredo',
         'correo': 'wilfredoquiala@gmail.com',

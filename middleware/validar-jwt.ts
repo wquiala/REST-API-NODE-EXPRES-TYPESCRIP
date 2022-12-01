@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import { Response, Request, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import config from "config";
 import AuthRequest, { User } from "../helpers/types";
 import Payload from "../helpers/Payload";
-import Usuario, { IUser } from "../models/usuario";
+import Usuario from "../models/usuario";
 
 const validarJWT = async (
   req: AuthRequest,

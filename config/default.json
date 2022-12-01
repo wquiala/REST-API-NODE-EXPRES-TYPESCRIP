@@ -1,4 +1,6 @@
 {
-    "SECRETORPRIVATEKEY": "Esteesmitprivate",
-    "jwtExpiration": 4000
+  "SECRETORPRIVATEKEY": "Esteesmitprivate",
+  "jwtExpiration": 4000,
+  "google_client_id": "1023916028923-mnn067lcjn3itrr0lo8oj1s07kddgrcj.apps.googleusercontent.com",
+  "google_secret_id": "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"
 }
