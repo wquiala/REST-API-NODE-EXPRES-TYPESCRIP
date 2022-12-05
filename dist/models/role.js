@@ -7,6 +7,5 @@ const RoleSchema = new mongoose_1.Schema({
         required: true,
     },
 });
-const Role = (0, mongoose_1.model)("Role", RoleSchema);
-exports.default = Role;
+exports.default = (0, mongoose_1.model)("Role", RoleSchema);
 //# sourceMappingURL=role.js.map

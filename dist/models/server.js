@@ -17,12 +17,16 @@ const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const config_1 = require("../database/config");
 const auth_1 = __importDefault(require("../routes/auth"));
+const categoria_1 = __importDefault(require("../routes/categoria"));
+const producto_1 = __importDefault(require("../routes/producto"));
 const user_1 = __importDefault(require("../routes/user"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
-        this.routerPath = "/api/user";
+        this.userPath = "/api/user";
         this.authPath = "/api/auth";
+        this.categoriasPath = "/api/categorias";
+        this.productosPath = "/api/productos";
         // DB connetct
         this.dbConnection();
         //Middlewares
@@ -41,7 +45,9 @@ class Server {
     }
     Routes() {
         this.app.use(this.authPath, auth_1.default);
-        this.app.use(this.routerPath, user_1.default); //("/api/user", require("../routes/user"));
+        this.app.use(this.userPath, user_1.default); //("/api/user", require("../routes/user"));
+        this.app.use(this.categoriasPath, categoria_1.default);
+        this.app.use(this.productosPath, producto_1.default);
     }
     Listen() {
         this.app.listen(8080, () => {

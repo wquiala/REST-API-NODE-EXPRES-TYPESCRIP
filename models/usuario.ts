@@ -1,15 +1,15 @@
-import { Document, model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
-export type TUser = {
-  nombre: String;
-  correo: string;
-  password: string;
-  img: string;
-  role: String;
-  estado: String;
-};
+// export type TUser = {
+//   nombre: String;
+//   correo: string;
+//   password: string;
+//   img: string;
+//   role: String;
+//   estado: String;
+// };
 
-export interface IUser extends TUser, Document {}
+//export interface IUser extends TUser, Document {}
 
 const usuarioSchema: Schema = new Schema({
   nombre: {

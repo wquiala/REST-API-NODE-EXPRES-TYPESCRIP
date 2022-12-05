@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
-import { Response, NextFunction } from "express";
 import config from "config";
-import AuthRequest, { User } from "../helpers/types";
+import { NextFunction, Response } from "express";
+import jwt from "jsonwebtoken";
 import Payload from "../helpers/Payload";
+import AuthRequest, { User } from "../helpers/types";
 import Usuario from "../models/usuario";
 
 const validarJWT = async (
@@ -24,7 +24,7 @@ const validarJWT = async (
     );
     const usuario: User | any = await Usuario.findById(payload.uid);
     req.user = usuario;
-    console.log(req.user);
+    //console.log(req.user);
 
     next();
     // console.log(!user);

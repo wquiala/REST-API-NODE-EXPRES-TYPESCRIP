@@ -12,6 +12,15 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+// export type TUser = {
+//   nombre: String;
+//   correo: string;
+//   password: string;
+//   img: string;
+//   role: String;
+//   estado: String;
+// };
+//export interface IUser extends TUser, Document {}
 const usuarioSchema = new mongoose_1.Schema({
     nombre: {
         type: String,
