@@ -15,11 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const config_1 = require("../database/config");
 const auth_1 = __importDefault(require("../routes/auth"));
 const buscar_1 = __importDefault(require("../routes/buscar"));
 const categoria_1 = __importDefault(require("../routes/categoria"));
 const producto_1 = __importDefault(require("../routes/producto"));
+const uploads_1 = __importDefault(require("../routes/uploads"));
 const user_1 = __importDefault(require("../routes/user"));
 class Server {
     constructor() {
@@ -29,6 +31,7 @@ class Server {
         this.categoriasPath = "/api/categorias";
         this.productosPath = "/api/productos";
         this.buscarPath = "/api/buscar";
+        this.uploadPath = "/api/upload";
         // DB connetct
         this.dbConnection();
         //Middlewares
@@ -39,6 +42,11 @@ class Server {
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.static("public"));
+        this.app.use((0, express_fileupload_1.default)({
+            useTempFiles: true,
+            tempFileDir: "/tmp/",
+            createParentPath: true,
+        }));
     }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -51,6 +59,7 @@ class Server {
         this.app.use(this.categoriasPath, categoria_1.default);
         this.app.use(this.productosPath, producto_1.default);
         this.app.use(this.buscarPath, buscar_1.default);
+        this.app.use(this.uploadPath, uploads_1.default);
     }
     Listen() {
         this.app.listen(8080, () => {

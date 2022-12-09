@@ -47,6 +47,15 @@ export const existeCategoriaporID = async (id: string) => {
   }
 };
 
+export const existeColeccion = (coleccion: string, colecciones: string[]) => {
+  if (!colecciones.includes(coleccion)) {
+    throw new Error(
+      `La coleccion ${coleccion} no se incluye entre las colecciones permitidas`
+    );
+  }
+  return true;
+};
+
 export const existeProductoporID = async (id: string) => {
   const existeID = await Producto.findById(id);
   if (!existeID) {

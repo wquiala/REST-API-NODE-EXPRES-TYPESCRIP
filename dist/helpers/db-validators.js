@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productoActivo = exports.categoriaActiva = exports.existeProductoporID = exports.existeCategoriaporID = exports.existeUsuarioporID = exports.categoriaExiste = exports.productoExiste = exports.emailExiste = exports.validarRole = void 0;
+exports.productoActivo = exports.categoriaActiva = exports.existeProductoporID = exports.existeColeccion = exports.existeCategoriaporID = exports.existeUsuarioporID = exports.categoriaExiste = exports.productoExiste = exports.emailExiste = exports.validarRole = void 0;
 const categoria_1 = __importDefault(require("../models/categoria"));
 const producto_1 = __importDefault(require("../models/producto"));
 const role_1 = __importDefault(require("../models/role"));
@@ -61,6 +61,13 @@ const existeCategoriaporID = (id) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.existeCategoriaporID = existeCategoriaporID;
+const existeColeccion = (coleccion, colecciones) => {
+    if (!colecciones.includes(coleccion)) {
+        throw new Error(`La coleccion ${coleccion} no se incluye entre las colecciones permitidas`);
+    }
+    return true;
+};
+exports.existeColeccion = existeColeccion;
 const existeProductoporID = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const existeID = yield producto_1.default.findById(id);
     if (!existeID) {

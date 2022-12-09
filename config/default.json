@@ -2,5 +2,7 @@
   "SECRETORPRIVATEKEY": "Esteesmitprivate",
   "jwtExpiration": 4000,
   "google_client_id": "1023916028923-mnn067lcjn3itrr0lo8oj1s07kddgrcj.apps.googleusercontent.com",
-  "google_secret_id": "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"
+  "google_secret_id": "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",
+  "CLOUDINARY_URL": "cloudinary://154251599385786:146JmG45DlCEVsRk1Ba9ZVyNsJ0@dayu9vym7",
+  "API Key": "154251599385786"
 }

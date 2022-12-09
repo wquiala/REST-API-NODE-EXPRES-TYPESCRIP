@@ -32,4 +32,11 @@ export interface Product {
 export default interface AuthRequest extends Request {
   user?: User;
   categoria?: Category;
+  files?: {
+    archivo?: {
+      name: string;
+      mv: Function;
+      tempFilePath: string;
+    };
+  };
 }
